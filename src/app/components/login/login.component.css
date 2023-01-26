@@ -18,6 +18,14 @@ form mat-form-field {
 form mat-form-field input {
     padding: 5px;
     font-size: 18px;
+    margin-right: 5px;
+}
+
+form mat-error {
+    padding: 5px;
+    font-size: 18px;
+    margin-right: 5px;
+    color: red;
 }
 
 .button-wrapper {

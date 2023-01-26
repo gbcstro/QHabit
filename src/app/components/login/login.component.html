@@ -1,13 +1,26 @@
 <mat-card>
     <mat-card-content style="background-color: white; border: 5px solid white; border-radius: 25px; margin-top: 5%; margin-left: 35%; margin-right: 35%;">
-        <div class="wrapper">
+        <div class="wrapper mat-elevation-z5">
             <h2>Login</h2>
-            <form [formGroup]="loginForm" >
-                <mat-form-field >
-                    <input matInput placeholder="Username" formControlName="user"/>
-                </mat-form-field>
+            <form [formGroup]="loginForm">
                 <mat-form-field>
-                    <input matInput placeholder="Password" formControlName="password"/>
+                    <input matInput placeholder="Email address *" formControlName="email"/>
+                    <mat-error *ngIf="email?.errors?.['required']">
+                        Email address is required
+                    </mat-error>
+                    <mat-error *ngIf="email?.errors?.['email']">
+                        Please enter a valid email address
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Password *" formControlName="password"/>
+                    <mat-error *ngIf="password?.errors?.['required']">
+                        Password is required
+                    </mat-error>
+                    <mat-error *ngIf="password?.errors?.['minLength']">
+                        Password is required
+                    </mat-error>
                 </mat-form-field>
 
                 <div class="button-wrapper">

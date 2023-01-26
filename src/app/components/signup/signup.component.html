@@ -2,7 +2,7 @@
     <mat-card-content style="background-color: white; border: 5px solid white; border-radius: 25px; margin-top: 5%; margin-left: 35%; margin-right: 35%;">
         <div class="wrapper">
             <h2>Sign Up</h2>
-            <form [formGroup]="loginForm" >
+            <form [formGroup]="signForm" >
                 <mat-form-field >
                     <input matInput placeholder="Username" formControlName="user"/>
                 </mat-form-field>
@@ -16,7 +16,6 @@
                 <div class="button-wrapper">
                     <a routerLink=""><span>Already have an account? Login</span></a>
                 </div>
-                
             </form>
         </div>
     </mat-card-content>
