@@ -12,7 +12,12 @@ form mat-form-field {
     display: flex;
     padding: 12px;
     width: 70%;
+    margin-left: 10%;
+}
 
+form mat-form-field input {
+    padding: 5px;
+    font-size: 18px;
 }
 
 .button-wrapper {
