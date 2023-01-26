@@ -1,0 +1,13 @@
+.nav-wrapper{
+    padding: 1rem;
+    background-color: rgb(0, 0, 0);
+}
+
+.nav-wrapper h5 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.nav-wrapper a {
+    color: white;
+}

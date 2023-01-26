@@ -1,0 +1,27 @@
+a:link{ text-decoration: none; color: black;}
+
+.wrapper {
+    padding: 20px;
+}
+
+h2 {
+    padding: 20px;
+}
+
+form mat-form-field {
+    display: flex;
+    padding: 12px;
+    width: 70%;
+
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+.button-wrapper button {
+    font-size: 18px;
+    padding: 24px;
+}
