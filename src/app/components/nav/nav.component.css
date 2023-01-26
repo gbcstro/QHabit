@@ -1,10 +1,10 @@
 .nav-wrapper{
-    padding: 1rem;
+    padding: 5px;
     background-color: rgb(0, 0, 0);
 }
 
 .nav-wrapper h5 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-align: center;
 }
 
