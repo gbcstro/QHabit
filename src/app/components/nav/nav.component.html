@@ -1,5 +1,25 @@
-<nav class="nav-wrapper">
-    <div>
-        <h5><a>QUITZILLA</a></h5>
+<mat-toolbar>
+    <div style="margin-left: 25%; ">
+        <span>QUITZILLA</span>
     </div>
-</nav>
+
+    <ng-container *ngIf="authService.currentUser$ | async as user; else loginButt">
+        <div style="margin-left: 25%;">
+            <button (click)="logout()">
+                <mat-icon>logout</mat-icon>
+                Logout
+            </button>
+        </div>
+    </ng-container>
+
+    <ng-template #loginButt>
+        <div style="margin-left: 25%;">
+            <button routerLink=''>
+                <mat-icon>login</mat-icon>
+                Login
+            </button>
+        </div>
+    </ng-template>
+    
+
+</mat-toolbar>

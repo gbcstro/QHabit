@@ -20,9 +20,17 @@ form mat-form-field input {
     font-size: 18px;
 }
 
+form mat-error {
+    padding: 5px;
+    font-size: 18px;
+    margin-right: 5px;
+    color: red;
+}
+
 .button-wrapper {
     display: flex;
     justify-content: center;
+    margin-top: 5px;
     padding: 5px;
 }
 

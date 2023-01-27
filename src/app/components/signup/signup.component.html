@@ -2,16 +2,44 @@
     <mat-card-content style="background-color: white; border: 5px solid white; border-radius: 25px; margin-top: 5%; margin-left: 35%; margin-right: 35%;">
         <div class="wrapper">
             <h2>Sign Up</h2>
-            <form [formGroup]="signForm" >
+            <form [formGroup]="signForm" (ngSubmit)="submit()" >
                 <mat-form-field >
-                    <input matInput placeholder="Username" formControlName="user"/>
-                </mat-form-field>
-                <mat-form-field>
-                    <input matInput placeholder="Password" formControlName="password"/>
+                    <input matInput placeholder="Name" formControlName="name"/>
+                    <mat-error *ngIf="name?.errors?.['required']">
+                        Please enter your name!
+                    </mat-error>
                 </mat-form-field>
 
+                <mat-form-field >
+                    <input matInput placeholder="Email address" formControlName="email"/>
+                    <mat-error *ngIf="email?.errors?.['required']">
+                        Email address is required!
+                    </mat-error>
+                    <mat-error *ngIf="email?.errors?.['email']">
+                        Please enter a valid email address!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Password" formControlName="password"/>
+                    <mat-error *ngIf="password?.errors?.['required']">
+                        Password is required!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field >
+                    <input matInput type="password" placeholder="Confirm Password" formControlName="confPassword"/>
+                    <mat-error *ngIf="confPassword?.errors?.['required']">
+                        Confirm password is required!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-error style="text-align: center;" *ngIf="signForm.errors?.['passwordsDontMatch']">
+                    Passwords should match!
+                </mat-error>
+
                 <div class="button-wrapper">
-                    <button style="background-color: green; color: white;" mat-raised-button type="submit">Submit</button>
+                    <button style="background-color: green; color: white;" mat-raised-button type="submit">Sign up!</button>
                 </div>
                 <div class="button-wrapper">
                     <a routerLink=""><span>Already have an account? Login</span></a>

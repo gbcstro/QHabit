@@ -15,7 +15,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
+import {MatMenuModule} from '@angular/material/menu';
+
 import { AppRoutingModule } from './app-routing.module';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 
 @NgModule({
@@ -38,7 +46,13 @@ import { AppRoutingModule } from './app-routing.module';
     MatInputModule,
     ReactiveFormsModule,
     MatCardModule,
-    AppRoutingModule
+    MatMenuModule,
+    AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    HotToastModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
