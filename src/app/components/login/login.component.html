@@ -1,33 +1,35 @@
-<mat-card>
-    <mat-card-content style="background-color: white; border: 5px solid white; border-radius: 25px; margin-top: 5%; margin-left: 35%; margin-right: 35%;">
-        <div class="wrapper">
-            <h2>Login</h2>
-            <form [formGroup]="loginForm" (ngSubmit)="submit()">
-                <mat-form-field>
-                    <input matInput placeholder="Email address *" formControlName="email"/>
-                    <mat-error *ngIf="email?.errors?.['required']">
-                        Email address is required
-                    </mat-error>
-                    <mat-error *ngIf="email?.errors?.['email']">
-                        Please enter a valid email address
-                    </mat-error>
-                </mat-form-field>
-
-                <mat-form-field>
-                    <input matInput type="password" placeholder="Password *" formControlName="password"/>
-                    <mat-error *ngIf="password?.errors?.['required']">
-                        Password is required
-                    </mat-error>
-                </mat-form-field>
-
-                <div class="button-wrapper">
-                    <button style="background-color: green; color: white;" mat-raised-button type="submit">Log in</button>
-                </div>
-                <div class="button-wrapper">
-                    <a routerLink="signup"><button style="background-color: rgb(0, 0, 0); color: white;" mat-raised-button color="accent">Create new account</button></a>
-                </div>
-                
-            </form>
-        </div>
-    </mat-card-content>
-</mat-card>
+<div class="main-div">
+    <mat-card>
+        <mat-card-content style="background-color: white; border: 5px solid white; border-radius: 25px;">
+            <div class="wrapper">
+                <h2>Login</h2>
+                <form [formGroup]="loginForm" (ngSubmit)="submit()">
+                    <mat-form-field>
+                        <input matInput placeholder="Email address *" formControlName="email"/>
+                        <mat-error *ngIf="email?.errors?.['required']">
+                            Email address is required
+                        </mat-error>
+                        <mat-error *ngIf="email?.errors?.['email']">
+                            Please enter a valid email address
+                        </mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field>
+                        <input matInput type="password" placeholder="Password *" formControlName="password"/>
+                        <mat-error *ngIf="password?.errors?.['required']">
+                            Password is required
+                        </mat-error>
+                    </mat-form-field>
+    
+                    <div class="button-wrapper">
+                        <button style="background-color: green; color: white;" mat-raised-button type="submit">Log in</button>
+                    </div>
+                    <div class="button-wrapper">
+                        <a routerLink="signup">Create new account</a>
+                    </div>
+                    
+                </form>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
