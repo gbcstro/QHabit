@@ -1,5 +1,13 @@
-import { NgModule } from '@angular/core';
+import { NgModule, } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {DatePipe} from '@angular/common';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
+import {MatNativeDateModule} from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { HabitListComponent } from './components/habit-list/habit-list.component';
@@ -16,6 +24,9 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -24,7 +35,9 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { HotToastModule } from '@ngneat/hot-toast';
-
+import { AddHabitComponent } from './components/add-habit/add-habit.component';
+import { EditHabitComponent } from './components/edit-habit/edit-habit.component';
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -33,6 +46,9 @@ import { HotToastModule } from '@ngneat/hot-toast';
     HabitListComponent,
     LoginComponent,
     SignupComponent,
+    AddHabitComponent,
+    EditHabitComponent,
+    
     
   ],
   imports: [
@@ -47,14 +63,22 @@ import { HotToastModule } from '@ngneat/hot-toast';
     ReactiveFormsModule,
     MatCardModule,
     MatMenuModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    MatDatepickerModule,
     AppRoutingModule,
+    MatNativeDateModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    HotToastModule.forRoot()
+    HotToastModule.forRoot(),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
-  providers: [],
+  providers: [DatePipe, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

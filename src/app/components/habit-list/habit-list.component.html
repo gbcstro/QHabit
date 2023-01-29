@@ -1,15 +1,58 @@
-<h1 style="color: white;" *ngIf="user$ | async as user">Welcome, {{user.email}}!</h1>
+<div>
+    <div class="main-div">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title><h1 style="color: black; font-size: 2rem;" >BAD HABITS</h1></mat-card-title>
+            </mat-card-header>
+            
+            <mat-card-content>
+                <mat-progress-bar 
+                    class="example-margin"
+                    mode = "determinate"
+                    value="100">
+                    </mat-progress-bar>
+            </mat-card-content>
 
-<div class="main-div">
-    <mat-card class="example-card" style="background-color: white;">
-        <mat-card-header>
-            <mat-card-title>Alcohol</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button color="warn">Reset</button>
-        </mat-card-actions>
-    </mat-card>
+            <mat-card-actions>
+                <div class="button-wrapper">
+                    <button mat-raised-button color="primary" (click)="openDialog()">Add</button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    
+    <div class="main-div">
+        <mat-card class="example-card">
+            <mat-card-header style="padding: 12px;">
+                <mat-card-title style="font-size: 2rem;">habit.name.toUpperCase</mat-card-title>
+            </mat-card-header>
+    
+            <mat-card-content>
+                <section>
+                    <span style="font-size: 1.5rem;">Abstinence Time: </span>
+                </section>
+                <section class="prog-wrapper">
+                    <mat-progress-bar 
+                    class="example-margin"
+                    mode = "determinate"
+                    value="80">
+                    </mat-progress-bar>
+                </section>
+            </mat-card-content>
+    
+            <mat-card-actions>
+                <div class="button-wrapper">
+                    <button mat-raised-button color="warn">Delete</button>
+                </div>
+                <div class="button-wrapper">
+                    <button mat-raised-button color="accent">Reset</button>
+                </div>
+                <div class="button-wrapper">
+                    <button mat-raised-button color="primary">Edit</button>
+                </div> 
+            </mat-card-actions>
+        </mat-card>
+    </div>
 </div>
+
+
