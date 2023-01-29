@@ -29,7 +29,6 @@ export function passMatchValidator(): ValidatorFn{
 export class SignupComponent implements OnInit{
 
   signForm = new FormGroup({
-    name: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required,Validators.email]),
     password: new FormControl('', [Validators.required]),
     confPassword: new FormControl('', Validators.required)
@@ -45,9 +44,6 @@ export class SignupComponent implements OnInit{
     private router: Router
   ){ }
 
-  get name() {
-    return this.signForm.get('name');
-  }
 
   get email() {
     return this.signForm.get('email');
@@ -62,21 +58,13 @@ export class SignupComponent implements OnInit{
   }
 
   submit(){
-    const { name, email , password} = this.signForm.value;
+    const {email , password} = this.signForm.value;
 
-    if(!this.signForm.valid || !name || !email || !password) { 
+    if(!this.signForm.valid || !email || !password) { 
       return ; 
     }
     
-    this.authService.signup(name, email, password).pipe(
-      this.toast.observe({
-        success: 'Account sign up!',
-        loading: 'Signing in...',
-        error: ({ message }) => `${message}`,
-      })
-    ).subscribe(() => {
-      this.router.navigate(['/habit-list']);
-    })
+    this.authService.SignUp(email, password);
   }
 
 }

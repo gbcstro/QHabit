@@ -44,15 +44,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     
-    this.authService.login(email, password).pipe(
-      this.toast.observe({
-        success: "Login succesfully!",
-        loading: "Logging in...",
-        error: ({ message }) => `There was an error!`,
-      })
-    ).subscribe(() => {
-      this.router.navigate(['/habit-list']);
-    })
+    this.authService.SignIn(email, password);
 
   }
 

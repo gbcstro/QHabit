@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {DatePipe} from '@angular/common';
+
+import { AngularFireModule } from '@angular/fire/compat';
+
+import {MatNativeDateModule} from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { HabitListComponent } from './components/habit-list/habit-list.component';
@@ -49,10 +54,11 @@ import { HotToastModule } from '@ngneat/hot-toast';
     MatMenuModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
+    AngularFireModule.initializeApp(environment.firebase),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    HotToastModule.forRoot()
+    HotToastModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

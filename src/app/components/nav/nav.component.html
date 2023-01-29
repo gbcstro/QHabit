@@ -3,7 +3,7 @@
         <span>QUITZILLA</span>
     </div>
 
-    <ng-container *ngIf="authService.currentUser$ | async as user; else loginButt">
+    <ng-container *ngIf="authService.userData as user; else loginButt">
         <div style="margin-left: 35%;">
             <button (click)="logout()">
                 <mat-icon>logout</mat-icon>

@@ -9,15 +9,14 @@ import { HabitListComponent } from './components/habit-list/habit-list.component
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch:'full',
-    component: LoginComponent,
+    path: '', 
+    redirectTo: 'login', 
+    pathMatch: 'full' 
   },
   {
     path: 'login',
     component: LoginComponent,
   },
-
   {
     path: 'signup',
     component:SignupComponent,
