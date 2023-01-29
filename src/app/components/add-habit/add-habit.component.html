@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Add Habit</h1>
+<mat-dialog-content class="mat=typography">
+    <form [formGroup]="addForm" (ngSubmit)="addHabit()">
+        <mat-form-field>
+            <mat-label>Habit name</mat-label>
+            <input matInput placeholder="Habit name" formControlName="habit">
+            <mat-error *ngIf="habit?.errors?.['habit']">
+                Habit name is required!
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [formGroup]="addForm" [rangePicker]="picker">
+              <input matStartDate formControlName="start" placeholder="Start date">
+              <input matEndDate formControlName="end" placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          
+            <mat-error *ngIf="addForm.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+            <mat-error *ngIf="addForm.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+          </mat-form-field>
+        
+        <div class="button-wrapper">
+            <button style="background-color: green; color: white;" mat-raised-button type="submit">Add</button>
+        </div>
+    </form>
+</mat-dialog-content>
+
+

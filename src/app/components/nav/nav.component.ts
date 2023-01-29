@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -7,11 +7,14 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
 
   constructor(
-    public authService: AuthenticationService,
-    private router: Router) { }
+    public authService: AuthenticationService) { }
+
+  ngOnInit(): void {
+      
+  }
 
   logout() {
     this.authService.SignOut();
