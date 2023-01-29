@@ -23,7 +23,12 @@ export class DataService {
   }
 
   deleteHabit(habit: Habit) {
-    return this.afs.doc(this.user + habit.habit).delete();
+    return this.afs.doc(this.user + '/' + habit.id).delete();
+  }
+
+  updateStudent(habit: Habit) {
+    this.deleteHabit(habit);
+    this.addHabit(habit);
   }
 
 }

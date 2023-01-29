@@ -28,9 +28,9 @@ export class HabitListComponent implements OnInit{
     
   }
 
-  openDialog(){
+  openAddDialog(){
     const dialogRef = this.dialog.open(AddHabitComponent, {
-      height: '36%',
+      height: '50%',
       width: '55%'
     });
   }

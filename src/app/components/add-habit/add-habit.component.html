@@ -4,8 +4,16 @@
         <mat-form-field>
             <mat-label>Habit name</mat-label>
             <input matInput placeholder="Habit name" formControlName="habit">
-            <mat-error *ngIf="habit?.errors?.['habit']">
+            <mat-error *ngIf="habit?.errors?.['required']">
                 Habit name is required!
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>How many minutes you spend per day?</mat-label>
+            <input matInput placeholder="minutes" formControlName="minutes">
+            <mat-error *ngIf="minutes?.errors?.['required']">
+                Time is required!
             </mat-error>
         </mat-form-field>
 

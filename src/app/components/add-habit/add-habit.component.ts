@@ -19,6 +19,7 @@ export class AddHabitComponent implements OnInit {
 
   addForm = new FormGroup({
     habit: new FormControl('', Validators.required),
+    minutes: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
     start: new FormControl<Date | null>(null, Validators.required),
     end: new FormControl<Date | null>(null, Validators.required),
   })
@@ -46,6 +47,10 @@ export class AddHabitComponent implements OnInit {
     return this.addForm.get('habit');
   }
 
+  get minutes() {
+    return this.addForm.get('minutes');
+  }
+
   get start() {
     return this.addForm.get('start');
   }
@@ -55,17 +60,20 @@ export class AddHabitComponent implements OnInit {
   }
 
   addHabit (){
-    const {habit, start, end} = this.addForm.value;
+    const {habit, minutes, start, end} = this.addForm.value;
 
-    if (!this.addForm.valid || !habit || !start || !end){
+    if (!this.addForm.valid || !habit || !minutes || !start || !end){
       return;
     }
 
+    const conv_mins = Number(minutes);
+
     const habitObj: Habit = {
       id: '',
+      minutes: conv_mins, 
       habit: habit,
-      start_date: start,
-      end_date: end,
+      start_date: this.datePipe.transform(start, "MM-dd-yyyy"),
+      end_date: this.datePipe.transform(end, "MM-dd-yyyy"),
     };
 
     this.data.addHabit(habitObj);

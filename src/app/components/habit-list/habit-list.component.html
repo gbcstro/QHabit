@@ -15,7 +15,7 @@
 
             <mat-card-actions>
                 <div class="button-wrapper">
-                    <button mat-raised-button color="primary" (click)="openDialog()">Add</button>
+                    <button mat-raised-button color="primary" (click)="openAddDialog()">Add</button>
                 </div>
             </mat-card-actions>
         </mat-card>
@@ -31,20 +31,27 @@
             
                     <mat-card-content>
                         <section>
-                            <span style="font-size: 1.5rem;">Abstinence Time: </span>
+                            <span style="font-size: 1.3rem;">Alloted Time: {{ habit.minutes }} minutes</span>
                         </section>
+                        
                         <section class="prog-wrapper">
                             <mat-progress-bar 
                             class="example-margin"
                             mode = "determinate"
-                            value="80">
+                            value="10">
                             </mat-progress-bar>
+                        </section>
+
+                        <section>
+                            <span style="font-size: 1.3rem;">Abstinence Range:</span>
+                            <br>
+                            <span style="font-size: 1.3rem;">{{ habit.start_date }} to {{ habit.end_date }}</span>
                         </section>
                     </mat-card-content>
             
                     <mat-card-actions>
                         <div class="button-wrapper">
-                            <button mat-raised-button color="warn">Delete</button>
+                            <button mat-raised-button color="warn" (click)="deleteHabit(habit)">Delete</button>
                         </div>
                         <div class="button-wrapper">
                             <button mat-raised-button color="accent">Reset</button>

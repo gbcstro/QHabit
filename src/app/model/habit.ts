@@ -1,6 +1,7 @@
 export interface Habit {
     id: string,
     habit: string,
-    start_date: Date,
-    end_date: Date,
+    minutes: number,
+    start_date: any,
+    end_date: any,
 }
