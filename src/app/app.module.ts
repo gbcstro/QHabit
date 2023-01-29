@@ -70,6 +70,7 @@ import { AuthenticationService } from './services/authentication.service';
     MatNativeDateModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
