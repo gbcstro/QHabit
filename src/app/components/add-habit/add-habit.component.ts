@@ -29,7 +29,7 @@ export class AddHabitComponent implements OnInit {
     private database: Database,
     private datePipe: DatePipe,
     public dialogRef: MatDialogRef<AddHabitComponent>,
-    private data: DataService
+    private data: DataService 
     ) {}
     
   ngOnInit(): void {

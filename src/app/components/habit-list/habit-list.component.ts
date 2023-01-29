@@ -8,6 +8,7 @@ import { AddHabitComponent } from '../add-habit/add-habit.component';
 import { DataService } from 'src/app/services/data.service';
 import { Habit } from 'src/app/model/habit';
 import { HotToastModule, HotToastService } from '@ngneat/hot-toast';
+import { EditHabitComponent } from '../edit-habit/edit-habit.component';
 
 
 @Component({
@@ -30,6 +31,13 @@ export class HabitListComponent implements OnInit{
 
   openAddDialog(){
     const dialogRef = this.dialog.open(AddHabitComponent, {
+      height: '50%',
+      width: '55%'
+    });
+  }
+
+  openEditDialog(){
+    const dialogRef = this.dialog.open(EditHabitComponent, {
       height: '50%',
       width: '55%'
     });
