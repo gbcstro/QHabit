@@ -68,15 +68,7 @@ export class SignupComponent implements OnInit{
       return ; 
     }
     
-    this.authService.signup(name, email, password).pipe(
-      this.toast.observe({
-        success: 'Account sign up!',
-        loading: 'Signing in...',
-        error: ({ message }) => `${message}`,
-      })
-    ).subscribe(() => {
-      this.router.navigate(['/habit-list']);
-    })
+    this.authService.SignUp(email, password)
   }
 
 }

@@ -1,0 +1,17 @@
+.mat-dialog-content {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+form mat-form-field {
+    display: flex;
+    padding: 12px;
+    width: 70%;
+    margin-left: 10%;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}

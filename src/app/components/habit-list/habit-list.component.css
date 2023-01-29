@@ -1,4 +1,21 @@
 .main-div{
+    padding: 5px;
     margin-left: 30%;
     margin-right: 30%;
-  }
+}
+
+mat-card-title {
+  font-size: rem;
+}
+
+span {
+  padding: 12px;
+}
+
+.prog-wrapper {
+  padding: 12px;
+}
+
+.button-wrapper{
+  padding: 12px;
+}
