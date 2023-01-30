@@ -10,5 +10,7 @@ Business Requirements:
     • Rewards
     • Forget password feature
     • Notifications
+    • Goal feature
+    • Notifications
       
 Tech Stack: Angular TypeScript Firebase

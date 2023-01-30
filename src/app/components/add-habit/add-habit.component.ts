@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Database, set, ref, update, onValue,remove } from '@angular/fire/database';
 import {MatDialogRef} from '@angular/material/dialog';
@@ -7,6 +7,25 @@ import { DatePipe } from '@angular/common';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Habit } from 'src/app/model/habit';
 import { DataService } from 'src/app/services/data.service';
+
+export function dateValidator(): ValidatorFn{
+  
+
+  return (control: AbstractControl): ValidationErrors | null => {
+    
+    const date = control.get('start')?.value;
+    const currDate = new Date();
+
+    if (date && currDate && date > currDate){
+      return {
+        futureDate: true
+      }
+    }
+
+    return null;
+
+  };
+} 
 
 
 
@@ -20,7 +39,7 @@ export class AddHabitComponent implements OnInit {
   addForm = new FormGroup({
     habit: new FormControl('', Validators.required),
     start: new FormControl<Date | null>(null, Validators.required),
-  })
+  }, { validators:dateValidator() })
   
   constructor(
     private authService: AuthenticationService, 

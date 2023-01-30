@@ -22,7 +22,9 @@
             </mat-datepicker>
         </mat-form-field>
           
-
+        <mat-error style="text-align: center;" *ngIf="addForm.errors?.['futureDate']">
+            Future date selected!
+        </mat-error> 
         
         <div class="button-wrapper">
             <button style="background-color: green; color: white;" mat-raised-button type="submit">Add</button>
