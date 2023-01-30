@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HabitListComponent } from './components/habit-list/habit-list.component';
+import { AuthGuard } from './services/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
   {
     path: 'habit-list',
     component: HabitListComponent,
+    
   },
 ];
 

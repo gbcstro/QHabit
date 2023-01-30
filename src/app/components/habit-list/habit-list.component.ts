@@ -8,7 +8,7 @@ import { AddHabitComponent } from '../add-habit/add-habit.component';
 import { DataService } from 'src/app/services/data.service';
 import { Habit } from 'src/app/model/habit';
 import { HotToastModule, HotToastService } from '@ngneat/hot-toast';
-import { EditHabitComponent } from '../edit-habit/edit-habit.component';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -19,32 +19,42 @@ import { EditHabitComponent } from '../edit-habit/edit-habit.component';
 export class HabitListComponent implements OnInit{
  
   user = this.authService.userData.uid;
+
   habitList : Habit[] = [];
+
+  math = Math;
+
+  dateNow = new Date();
+  
 
   constructor(
     private authService: AuthenticationService, 
     private dialog: MatDialog, 
     private data: DataService,
-    private toast: HotToastService) {
-    
+    private toast: HotToastService,
+    private datePipe: DatePipe,) {
+
   }
 
   openAddDialog(){
     const dialogRef = this.dialog.open(AddHabitComponent, {
-      height: '50%',
-      width: '55%'
-    });
-  }
-
-  openEditDialog(){
-    const dialogRef = this.dialog.open(EditHabitComponent, {
-      height: '50%',
+      height: '38%',
       width: '55%'
     });
   }
 
   ngOnInit(): void {
     this.getAllHabits();
+  }
+
+  AbstinenceTime(habit : Habit) {
+    const sDate = new Date(habit.convertedDate);
+    const now = new Date();
+
+    const Time = sDate.getTime() - now.getTime();
+    const absDay = Time / (1000 * 3600 * 24);
+    
+    return this.math.abs(this.math.trunc(absDay));
   }
 
   getAllHabits() {
@@ -66,5 +76,8 @@ export class HabitListComponent implements OnInit{
     this.data.deleteHabit(habit);
   }
 
+  resetHabit(habit: Habit){
+    this.data.resetDate(habit);
+  }
 
 }

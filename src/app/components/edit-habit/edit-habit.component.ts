@@ -15,9 +15,7 @@ import { DataService } from 'src/app/services/data.service';
 export class EditHabitComponent implements OnInit{
   editForm = new FormGroup({
     habit: new FormControl('', Validators.required),
-    minutes: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
     start: new FormControl<Date | null>(null, Validators.required),
-    end: new FormControl<Date | null>(null, Validators.required),
   })
   
   constructor(
@@ -43,33 +41,24 @@ export class EditHabitComponent implements OnInit{
     return this.editForm.get('habit');
   }
 
-  get minutes() {
-    return this.editForm.get('minutes');
-  }
 
   get start() {
     return this.editForm.get('start');
   }
 
-  get end() {
-    return this.editForm.get('end');
-  }
 
   addHabit (){
-    const {habit, minutes, start, end} = this.editForm.value;
+    const {habit, start} = this.editForm.value;
 
-    if (!this.editForm.valid || !habit || !minutes || !start || !end){
+    if (!this.editForm.valid || !habit || !start ){
       return;
     }
 
-    const conv_mins = Number(minutes);
 
     const habitObj: Habit = {
       id: '',
-      minutes: conv_mins, 
       habit: habit,
-      start_date: this.datePipe.transform(start, "MM-dd-yyyy"),
-      end_date: this.datePipe.transform(end, "MM-dd-yyyy"),
+      convertedDate: this.datePipe.transform(start, "MM-dd-yyyy"),
     };
 
     this.data.addHabit(habitObj);

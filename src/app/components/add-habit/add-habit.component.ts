@@ -19,9 +19,7 @@ export class AddHabitComponent implements OnInit {
 
   addForm = new FormGroup({
     habit: new FormControl('', Validators.required),
-    minutes: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
     start: new FormControl<Date | null>(null, Validators.required),
-    end: new FormControl<Date | null>(null, Validators.required),
   })
   
   constructor(
@@ -29,7 +27,7 @@ export class AddHabitComponent implements OnInit {
     private database: Database,
     private datePipe: DatePipe,
     public dialogRef: MatDialogRef<AddHabitComponent>,
-    private data: DataService 
+    private data: DataService  
     ) {}
     
   ngOnInit(): void {
@@ -47,33 +45,21 @@ export class AddHabitComponent implements OnInit {
     return this.addForm.get('habit');
   }
 
-  get minutes() {
-    return this.addForm.get('minutes');
-  }
-
   get start() {
     return this.addForm.get('start');
   }
 
-  get end() {
-    return this.addForm.get('end');
-  }
-
   addHabit (){
-    const {habit, minutes, start, end} = this.addForm.value;
+    const {habit, start} = this.addForm.value;
 
-    if (!this.addForm.valid || !habit || !minutes || !start || !end){
+    if (!this.addForm.valid || !habit || !start ){
       return;
     }
-
-    const conv_mins = Number(minutes);
-
+ 
     const habitObj: Habit = {
       id: '',
-      minutes: conv_mins, 
       habit: habit,
-      start_date: this.datePipe.transform(start, "MM-dd-yyyy"),
-      end_date: this.datePipe.transform(end, "MM-dd-yyyy"),
+      convertedDate: this.datePipe.transform(start, "MM-dd-yyyy"),
     };
 
     this.data.addHabit(habitObj);

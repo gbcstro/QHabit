@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { HabitListComponent } from '../components/habit-list/habit-list.component';
@@ -10,8 +11,12 @@ import { AuthenticationService } from './authentication.service';
 export class DataService {
 
   user = this.authService.userData.uid
+  dateNow = new Date();
 
-  constructor(private afs: AngularFirestore, private authService: AuthenticationService) { }
+  constructor(
+    private afs: AngularFirestore, 
+    private authService: AuthenticationService,
+    private datePipe: DatePipe) { }
 
   addHabit(habit : Habit){
     habit.id = this.afs.createId();
@@ -26,9 +31,10 @@ export class DataService {
     return this.afs.doc(this.user + '/' + habit.id).delete();
   }
 
-  updateStudent(habit: Habit) {
-    this.deleteHabit(habit);
-    this.addHabit(habit);
+  resetDate(habit: Habit) {
+    const now = this.datePipe.transform(this.dateNow, "MM-dd-yyyy");
+
+    return this.afs.doc(this.user + '/' + habit.id).update({convertedDate:now});
   }
 
 }
