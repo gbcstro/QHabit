@@ -11,6 +11,5 @@ Business Requirements:
     • Forget password feature
     • Notifications
     • Goal feature
-    • Notifications
       
 Tech Stack: Angular TypeScript Firebase
